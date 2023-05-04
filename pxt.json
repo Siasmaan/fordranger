@@ -1,5 +1,5 @@
 {
-    "name": "factory_car",
+    "name": "factory",
     "description": "",
     "dependencies": {
         "core": "*",
