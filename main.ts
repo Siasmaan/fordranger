@@ -56,4 +56,3 @@ function line_stop () {
     }
 }
 line_stop()
-turn_R()
