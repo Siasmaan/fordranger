@@ -1,0 +1,102 @@
+def ซ้าย():
+    while True:
+        maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 200)
+        basic.pause(100)
+        maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 200)
+        maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 200)
+        basic.pause(200)
+        while maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1:
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 200)
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 200)
+        maqueen.motor_stop(maqueen.Motors.ALL)
+        break
+def ขวา():
+    while True:
+        maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 200)
+        basic.pause(100)
+        maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 200)
+        maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 200)
+        basic.pause(200)
+        while maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1:
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 200)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 200)
+        maqueen.motor_stop(maqueen.Motors.ALL)
+        break
+def ไม่หยุด():
+    while True:
+        if maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 1:
+            maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 255)
+        elif maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 0 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 1:
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 255)
+        elif maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 0:
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 255)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
+        else:
+            maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 255)
+            basic.pause(200)
+            maqueen.motor_stop(maqueen.Motors.ALL)
+            break
+def หมุนนะ():
+    while True:
+        maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 200)
+        basic.pause(100)
+        maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 200)
+        maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 200)
+        basic.pause(500)
+        while maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1:
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 200)
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 200)
+        maqueen.motor_stop(maqueen.Motors.ALL)
+        break
+def Line_stop():
+    while True:
+        if maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 1:
+            maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 255)
+        elif maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 0 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 1:
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 255)
+        elif maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1 and maqueen.read_patrol(maqueen.Patrol.PATROL_RIGHT) == 0:
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 255)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
+        else:
+            maqueen.motor_stop(maqueen.Motors.ALL)
+            break
+def เย้():
+    music.start_melody(music.built_in_melody(Melodies.ENTERTAINER),
+        MelodyOptions.ONCE)
+    for index in range(2):
+        maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
+        maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 255)
+ไม่หยุด()
+Line_stop()
+ขวา()
+ไม่หยุด()
+Line_stop()
+หมุนนะ()
+ไม่หยุด()
+ไม่หยุด()
+ไม่หยุด()
+Line_stop()
+หมุนนะ()
+Line_stop()
+ซ้าย()
+Line_stop()
+ซ้าย()
+Line_stop()
+หมุนนะ()
+ไม่หยุด()
+ไม่หยุด()
+ไม่หยุด()
+Line_stop()
+หมุนนะ()
+ไม่หยุด()
+Line_stop()
+ขวา()
+ไม่หยุด()
+Line_stop()
+เย้()
+
+def on_forever():
+    pass
+basic.forever(on_forever)
