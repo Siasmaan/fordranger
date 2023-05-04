@@ -18,8 +18,8 @@ def ขวา():
         maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 200)
         basic.pause(200)
         while maqueen.read_patrol(maqueen.Patrol.PATROL_LEFT) == 1:
-            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 200)
-            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 200)
+            maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 50)
+            maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CCW, 50)
         maqueen.motor_stop(maqueen.Motors.ALL)
         break
 def ไม่หยุด():
@@ -62,13 +62,6 @@ def Line_stop():
         else:
             maqueen.motor_stop(maqueen.Motors.ALL)
             break
-def เย้():
-    music.start_melody(music.built_in_melody(Melodies.ENTERTAINER),
-        MelodyOptions.ONCE)
-    for index in range(2):
-        maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
-        maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 255)
-ไม่หยุด()
 Line_stop()
 ขวา()
 ไม่หยุด()
@@ -93,10 +86,10 @@ Line_stop()
 ไม่หยุด()
 Line_stop()
 ขวา()
-ไม่หยุด()
 Line_stop()
-เย้()
+ไม่หยุด()
 
 def on_forever():
     pass
 basic.forever(on_forever)
+
